@@ -23,9 +23,9 @@ to the require section of your `composer.json` file.
 
 ## Usage
 
-Modify the bahavior method of the controller you want to rate limit
+Modify the behavior method of the controller you want to rate limit
 
-```
+```php
 public function behaviors()
 {
 	return [
@@ -51,3 +51,5 @@ public function behaviors()
 	];
 }
 ```
+
+Forked from ethercreative/yii2-ip-ratelimiter.

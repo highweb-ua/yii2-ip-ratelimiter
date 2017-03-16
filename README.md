@@ -10,13 +10,13 @@ The preferred way to install this extension is through [composer](http://getcomp
 Either run
 
 ```
-php composer.phar require highweb/yii2-ip-ratelimiter "~1.0"
+php composer.phar require highweb/yii2-ip-ratelimiter "^1.0"
 ```
 
 or add
 
 ```
-"ethercreatihighwebve/yii2-ip-ratelimiter": "~1.0"
+"highweb/yii2-ip-ratelimiter": "^1.0"
 ```
 
 to the require section of your `composer.json` file.
@@ -28,26 +28,26 @@ Modify the bahavior method of the controller you want to rate limit
 ```
 public function behaviors()
 {
-	$behaviors = parent::behaviors();
-	$behaviors['rateLimiter'] = [
-		// Use class
-		'class' => \ethercreative\ratelimiter\RateLimiter::className(),
+	return [
+		'rateLimiter' => [
+			// Use class
+			'class' => \highweb\ratelimiter\RateLimiter::className(),
 
-		// The maximum number of allowed requests
-		'rateLimit' => 100,
+			// The maximum number of allowed requests
+			'rateLimit' => 100,
 
-		// The time period for the rates to apply to
-		'timePeriod' => 600,
+			// The time period for the rates to apply to
+			'timePeriod' => 600,
 
-		// Separate rate limiting for guests and authenticated users
-		// Defaults to true
-		// - false: use one set of rates, whether you are authenticated or not
-		// - true: use separate ratesfor guests and authenticated users
-		'separateRates' => false,
+			// Separate rate limiting for guests and authenticated users
+			// Defaults to true
+			// - false: use one set of rates, whether you are authenticated or not
+			// - true: use separate ratesfor guests and authenticated users
+			'separateRates' => false,
 
-		// Whether to return HTTP headers containing the current rate limiting information
-		'enableRateLimitHeaders' => false,
+			// Whether to return HTTP headers containing the current rate limiting information
+			'enableRateLimitHeaders' => false,
+		]
 	];
-	return $behaviors;
 }
 ```

@@ -28,7 +28,7 @@ class UserRateLimiterTrait
 	 */
 	public static function findByIp($ip, $rateLimit, $timePeriod)
 	{
-		$user = new User;
+		$user = new static;
 		$user->ip = $ip;
 		$user->rateLimit = $rateLimit;
 		$user->timePeriod = $timePeriod;

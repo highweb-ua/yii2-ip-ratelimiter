@@ -3,7 +3,8 @@
 namespace highweb\ratelimiter;
 
 use Yii;
-use highweb\ratelimiter\User;
+use yii\base\NotSupportedException;
+use highweb\ratelimiter\UserRateLimiterTrait;
 
 class RateLimiter extends \yii\filters\RateLimiter
 {
@@ -28,11 +29,14 @@ class RateLimiter extends \yii\filters\RateLimiter
 	public function beforeAction($action)
 	{
 		$user = $this->user;
+		$identityClass = Yii::$app->getUser()->identityClass;
+		$userIdentityObject = Yii::createObject($identityClass);
 
 		if ($this->separateRates)
 			$user = $user ?: (Yii::$app->getUser() ? Yii::$app->getUser()->getIdentity(false) : null);
 
-		$user = $user ?: User::findByIp(Yii::$app->request->userIP, $this->rateLimit, $this->timePeriod);
+		if ($userIdentityObject instanceof UserRateLimiterTrait)
+			$user = $user ?: $identityClass::findByIp(Yii::$app->request->userIP, $this->rateLimit, $this->timePeriod);
 
 		if ($user instanceof RateLimitInterface)
 		{

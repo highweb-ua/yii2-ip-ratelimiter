@@ -1,10 +1,10 @@
 <?php
 
-namespace ethercreative\ratelimiter;
+namespace highweb\ratelimiter;
 
 use Yii;
 
-class User extends \yii\base\Model
+class UserRateLimiterTrait
 {
 	/**
 	 * @var the IP of the user

@@ -1,9 +1,9 @@
 <?php
 
-namespace ethercreative\ratelimiter;
+namespace highweb\ratelimiter;
 
 use Yii;
-use ethercreative\ratelimiter\User;
+use highweb\ratelimiter\User;
 
 class RateLimiter extends \yii\filters\RateLimiter
 {

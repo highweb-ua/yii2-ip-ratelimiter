@@ -1,5 +1,5 @@
 {
-	"name": "ethercreative/yii2-ip-ratelimiter",
+	"name": "highweb/yii2-ip-ratelimiter",
 	"description": "Allow guest clients to be rate limited, using their IP as the identifier.",
 	"type": "yii2-module",
 	"keywords": ["yii2", "ratelimiter"],
@@ -8,12 +8,16 @@
 		{
 			"name": "Matt Edmonston",
 			"email": "matt@ethercreative.co.uk"
+		},
+		{
+			"name": "Dmitry Fedorenko",
+			"email": "d.fedorenko@highweb.com.ua"
 		}
 	],
 	"require": {},
 	"autoload": {
 		"psr-4": {
-			"ethercreative\\ratelimiter\\": ""
+			"highweb\\ratelimiter\\": "src"
 		}
 	}
 }

@@ -28,27 +28,27 @@ Modify the behavior method of the controller you want to rate limit
 ```php
 public function behaviors()
 {
-	return [
-		'rateLimiter' => [
-			// Use class
-			'class' => \highweb\ratelimiter\RateLimiter::className(),
-
-			// The maximum number of allowed requests
-			'rateLimit' => 100,
-
-			// The time period for the rates to apply to
-			'timePeriod' => 600,
-
-			// Separate rate limiting for guests and authenticated users
-			// Defaults to true
-			// - false: use one set of rates, whether you are authenticated or not
-			// - true: use separate ratesfor guests and authenticated users
-			'separateRates' => false,
-
-			// Whether to return HTTP headers containing the current rate limiting information
-			'enableRateLimitHeaders' => false,
-		]
-	];
+    return [
+        'rateLimiter' => [
+            // Use class
+            'class' => \highweb\ratelimiter\RateLimiter::className(),
+            
+            // The maximum number of allowed requests
+            'rateLimit' => 100,
+            
+            // The time period for the rates to apply to
+            'timePeriod' => 600,
+            
+            // Separate rate limiting for guests and authenticated users
+            // Defaults to true
+            // - false: use one set of rates, whether you are authenticated or not
+            // - true: use separate ratesfor guests and authenticated users
+            'separateRates' => false,
+            
+            // Whether to return HTTP headers containing the current rate limiting information
+            'enableRateLimitHeaders' => false,
+        ]
+    ];
 }
 ```
 

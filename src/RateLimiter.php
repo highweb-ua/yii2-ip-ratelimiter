@@ -29,21 +29,16 @@ class RateLimiter extends \yii\filters\RateLimiter
 	public function beforeAction($action)
 	{
 		$user = $this->user;
-		$identityClass = Yii::$app->getUser()->identityClass;
-		$userIdentityObject = Yii::createObject($identityClass);
+        $identityClass = Yii::$app->getUser()->identityClass;
 
-		if ($this->separateRates)
-			$user = $user ?: (Yii::$app->getUser() ? Yii::$app->getUser()->getIdentity(false) : null);
+        if ($this->separateRates)
+            $user = $user ?: (Yii::$app->getUser() ? Yii::$app->getUser()->getIdentity(false) : null);
 
-		if ($userIdentityObject instanceof UserRateLimiterTrait)
-			$user = $user ?: $identityClass::findByIp(Yii::$app->request->userIP, $this->rateLimit, $this->timePeriod);
+        $user = $user ?: $identityClass::findByIp(Yii::$app->request->userIP, $this->rateLimit, $this->timePeriod);
 
-		if ($user instanceof RateLimitInterface)
-		{
+		if ($user instanceof RateLimitInterface) {
 			return parent::beforeAction($action);
-		}
-		else
-		{
+		} else {
 			Yii::trace('Check rate limit', __METHOD__);
 			$this->checkRateLimit(
 				$user,

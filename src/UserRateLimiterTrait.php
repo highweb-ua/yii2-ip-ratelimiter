@@ -4,7 +4,7 @@ namespace highweb\ratelimiter;
 
 use Yii;
 
-class UserRateLimiterTrait
+trait UserRateLimiterTrait
 {
 	/**
 	 * @var the IP of the user
